@@ -29,18 +29,14 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      # Этот шаг помогает избежать ошибок прав доступа
+      # Исправление прав доступа для vite
       - name: Fix vite permissions
         run: chmod +x node_modules/.bin/vite || true
 
       - name: Build project
         run: npm run build
 
-      # Диагностика — убедимся, что папка build создалась
-      - name: List files after build
-        run: ls -R
-
-      # ИСПРАВЛЕНО: путь ./build вместо ./dist
+      # Выгружаем папку build (так как outDir: 'build' в конфиге)
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
