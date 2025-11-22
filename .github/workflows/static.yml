@@ -1,4 +1,4 @@
-name: Deploy React app to GitHub Pages
+name: Deploy Vite React app to GitHub Pages
 
 on:
   push:
@@ -24,25 +24,30 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
 
       - name: Install dependencies
         run: npm install
 
+      # Чтобы убрать ошибку "vite: Permission denied"
+      - name: Fix vite permissions
+        run: chmod +x node_modules/.bin/vite
+
       - name: Build project
         run: npm run build
 
-      - name: Upload artifact (React build)
+      # Vite по умолчанию собирает в папку "dist"
+      - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './build'
+          path: './dist'
 
   deploy:
     needs: build
+    runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
