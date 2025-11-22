@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ArrowLeft, ChevronLeft, ChevronRight } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
+import { logUserAction } from "../services/logsApi";
 
 const beshbarmakSteps = [
   {
@@ -108,10 +109,11 @@ const beshbarmakSteps = [
 
 interface RecipePageProps {
   recipeId: string;
+  userId: string | null;
   onNavigateBack: () => void;
 }
 
-export function RecipePage({ recipeId, onNavigateBack }: RecipePageProps) {
+export function RecipePage({ recipeId, userId, onNavigateBack }: RecipePageProps) {
   const [currentStep, setCurrentStep] = useState(0);
 
   // For now, only Beshbarmak is implemented
@@ -124,12 +126,24 @@ export function RecipePage({ recipeId, onNavigateBack }: RecipePageProps) {
   const handlePrevious = () => {
     if (currentStep > 0) {
       setCurrentStep(currentStep - 1);
+      logUserAction({
+        userId,
+        recipeId,
+        action: 'previous_step',
+        stepIndex: currentStep - 1,
+      });
     }
   };
 
   const handleNext = () => {
     if (currentStep < totalSteps - 1) {
       setCurrentStep(currentStep + 1);
+      logUserAction({
+        userId,
+        recipeId,
+        action: 'next_step',
+        stepIndex: currentStep + 1,
+      });
     }
   };
 
