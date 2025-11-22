@@ -29,21 +29,22 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      # На всякий случай, если опять будет "vite: Permission denied"
+      # Этот шаг помогает избежать ошибок прав доступа
       - name: Fix vite permissions
         run: chmod +x node_modules/.bin/vite || true
 
       - name: Build project
         run: npm run build
 
-      - name: Show files after build
+      # Диагностика — убедимся, что папка build создалась
+      - name: List files after build
         run: ls -R
 
-      # ВАЖНО: тут ищем dist именно в корне репозитория
+      # ИСПРАВЛЕНО: путь ./build вместо ./dist
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: dist
+          path: ./build
 
   deploy:
     needs: build
