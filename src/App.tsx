@@ -7,18 +7,21 @@ import { fetchRecipes } from "../src/services/recipesApi";
 
 function useUserId() {
   useEffect(() => {
+    let userId = localStorage.getItem("userId");
     const params = new URLSearchParams(window.location.search);
-    let userId = params.get("userId");
 
     if (!userId) {
-      userId = localStorage.getItem("userId");
+      userId = params.get("userId");
     }
-
     if (!userId) {
       userId = uuidv4();
     }
 
     localStorage.setItem("userId", userId);
+
+    params.delete("userId");
+    const newUrl = `${window.location.pathname}${params.toString() ? "?" + params.toString() : ""}`;
+    window.history.replaceState({}, "", newUrl);
   }, []);
 
   return localStorage.getItem("userId");
