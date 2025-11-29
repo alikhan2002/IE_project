@@ -28,25 +28,38 @@ function useUserId() {
 }
 
 type Page = 
-  | { type: "home" }
-  | { type: "cuisine"; cuisine: "kazakh" | "palestinian" }
-  | { type: "recipe"; recipeId: string; cuisine: "kazakh" | "palestinian" };
+| { type: "home" }
+| { type: "cuisine"; cuisine: "kazakh" | "palestinian" }
+| { type: "recipe"; recipeId: string; cuisine: "kazakh" | "palestinian" };
 
 export default function App() {
   const userId = useUserId();
   //const recipe_list = fetchRecipes();
-  const [currentPage, setCurrentPage] = useState<Page>({ type: "home" });
+const [currentPage, setCurrentPage] = useState<Page>({ type: "home" });
 
-  return (
-@@ -56,10 +30,10 @@ export default function App() {
-      {currentPage.type === "recipe" && (
-        <RecipePage
-          recipeId={currentPage.recipeId}
+return (
+<>
+{currentPage.type === "home" && (
+<HomePage 
+onNavigateToCuisine={(cuisine) => setCurrentPage({ type: "cuisine", cuisine })}
+/>
+)}
+
+{currentPage.type === "cuisine" && (
+<CuisinePage
+cuisine={currentPage.cuisine}
+onNavigateBack={() => setCurrentPage({ type: "home" })}
+onSelectRecipe={(recipeId) => setCurrentPage({ type: "recipe", recipeId, cuisine: currentPage.cuisine })}
+/>
+)}
+
+{currentPage.type === "recipe" && (
+<RecipePage
+recipeId={currentPage.recipeId}
           userId={userId}
-          onNavigateBack={() => setCurrentPage({ type: "cuisine", cuisine: currentPage.cuisine })}
-        />
-      )}
-
-    </>
-  );
+onNavigateBack={() => setCurrentPage({ type: "cuisine", cuisine: currentPage.cuisine })}
+/>
+)}
+</>
+);
 }
