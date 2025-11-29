@@ -1,5 +1,6 @@
 import { ArrowLeft, Clock, User, Gauge } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
+import { logUserAction } from "../services/logsApi";
 
 interface Recipe {
   id: string;
@@ -14,6 +15,7 @@ interface Recipe {
 
 interface CuisinePageProps {
   cuisine: "kazakh" | "palestinian";
+  userId: string | null;
   onNavigateBack: () => void;
   onSelectRecipe: (recipeId: string) => void;
 }
@@ -84,7 +86,7 @@ const palestinianRecipes: Recipe[] = [
   }
 ];
 
-export function CuisinePage({ cuisine, onNavigateBack, onSelectRecipe }: CuisinePageProps) {
+export function CuisinePage({ cuisine, userId, onNavigateBack, onSelectRecipe }: CuisinePageProps) {
   const recipes = cuisine === "kazakh" ? kazakhRecipes : palestinianRecipes;
   const title = cuisine === "kazakh" ? "Kazakh Recipes" : "Palestinian Recipes";
   const pattern = cuisine;

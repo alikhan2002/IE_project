@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { ArrowLeft, ChevronLeft, ChevronRight, Star, ChefHat, Clock, Users } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
+import { logUserAction } from "../services/logsApi";
+import { logUserRating } from "../services/ratingApi";
 
 const beshbarmakSteps = [
   {
@@ -277,10 +279,11 @@ plov: {
 
 interface RecipePageProps {
   recipeId: string;
+  userId: string | null;
   onNavigateBack: () => void;
 }
 
-export function RecipePage({ recipeId, onNavigateBack }: RecipePageProps) {
+export function RecipePage({ recipeId, userId, onNavigateBack }: RecipePageProps) {
   const [currentStep, setCurrentStep] = useState(0);
   const [rating, setRating] = useState(0);
   const [hoveredRating, setHoveredRating] = useState(0);
@@ -297,13 +300,53 @@ export function RecipePage({ recipeId, onNavigateBack }: RecipePageProps) {
   const cookingStepIndex = currentStep - 1;
   const step = isCookingStep ? steps[cookingStepIndex] : null;
 
-  const handlePrevious = () => currentStep > 0 && setCurrentStep(currentStep - 1);
-  const handleNext = () => currentStep < totalSteps - 1 && setCurrentStep(currentStep + 1);
+  const handlePrevious = () => {
+    if (currentStep > 0) {
+      setCurrentStep(currentStep - 1);
+      logUserAction({
+        userId,
+        recipeId,
+        action: 'previous_step',
+        stepIndex: currentStep - 1,
+      });
+    }
+  };
+  const handleNext = () => {
+    if (currentStep < totalSteps - 1) {
+      setCurrentStep(currentStep + 1);
+      logUserAction({
+        userId,
+        recipeId,
+        action: 'next_step',
+        stepIndex: currentStep + 1,
+      });
+    }
+  };
   // const handleBack = () => (currentStep === 0 ? onNavigateBack() : handlePrevious());
-  const handleBack = () => onNavigateBack();
+  const handleBack = () => {
+    onNavigateBack();
+    logUserAction({
+      userId,
+      recipeId,
+      action: 'back_to_cuisine',
+      stepIndex: currentStep,
+    });
+  };
 
   const handleSubmitFeedback = () => {
     alert("Thank you for your feedback!");
+    logUserAction({
+      userId,
+      recipeId,
+      action: 'feedback',
+      stepIndex: currentStep,
+    });
+    logUserRating({
+      userId,
+      recipeId,
+      feedback: feedback,
+      rating: rating,
+    });
   };
 
   return (

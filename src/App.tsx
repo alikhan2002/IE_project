@@ -3,7 +3,6 @@ import { v4 as uuidv4 } from "uuid";
 import { HomePage } from "./components/HomePage";
 import { CuisinePage } from "./components/CuisinePage";
 import { RecipePage } from "./components/RecipePage";
-import { fetchRecipes } from "../src/services/recipesApi";
 
 function useUserId() {
   useEffect(() => {
@@ -35,31 +34,32 @@ type Page =
 export default function App() {
   const userId = useUserId();
   //const recipe_list = fetchRecipes();
-const [currentPage, setCurrentPage] = useState<Page>({ type: "home" });
+  const [currentPage, setCurrentPage] = useState<Page>({ type: "home" });
 
-return (
-<>
-{currentPage.type === "home" && (
-<HomePage 
-onNavigateToCuisine={(cuisine) => setCurrentPage({ type: "cuisine", cuisine })}
-/>
-)}
+  return (
+    <>
+    {currentPage.type === "home" && (
+    <HomePage 
+    onNavigateToCuisine={(cuisine) => setCurrentPage({ type: "cuisine", cuisine })}
+    />
+    )}
 
-{currentPage.type === "cuisine" && (
-<CuisinePage
-cuisine={currentPage.cuisine}
-onNavigateBack={() => setCurrentPage({ type: "home" })}
-onSelectRecipe={(recipeId) => setCurrentPage({ type: "recipe", recipeId, cuisine: currentPage.cuisine })}
-/>
-)}
+    {currentPage.type === "cuisine" && (
+    <CuisinePage
+    cuisine={currentPage.cuisine}
+    userId={userId}
+    onNavigateBack={() => setCurrentPage({ type: "home" })}
+    onSelectRecipe={(recipeId) => setCurrentPage({ type: "recipe", recipeId, cuisine: currentPage.cuisine })}
+    />
+    )}
 
-{currentPage.type === "recipe" && (
-<RecipePage
-recipeId={currentPage.recipeId}
-          userId={userId}
-onNavigateBack={() => setCurrentPage({ type: "cuisine", cuisine: currentPage.cuisine })}
-/>
-)}
-</>
-);
+    {currentPage.type === "recipe" && (
+    <RecipePage
+    recipeId={currentPage.recipeId}
+              userId={userId}
+    onNavigateBack={() => setCurrentPage({ type: "cuisine", cuisine: currentPage.cuisine })}
+    />
+    )}
+    </>
+  );
 }
