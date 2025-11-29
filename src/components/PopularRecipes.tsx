@@ -17,7 +17,7 @@ const recipes: Recipe[] = [
     cuisine: "Kazakh",
     time: "3 hours",
     servings: "6-8",
-    image: "https://i.ibb.co/Dfpx6mzb/images.png"
+    image: "https://i.ibb.co/Dfpx6mzb/images.png",
   },
   {
     id: 2,
@@ -25,7 +25,8 @@ const recipes: Recipe[] = [
     cuisine: "Palestinian",
     time: "1.5 hours",
     servings: "6",
-    image: "https://images.unsplash.com/photo-1727041423608-c15f1a145cc2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtaWRkbGUlMjBlYXN0ZXJuJTIwcmljZSUyMGRpc2h8ZW58MXx8fHwxNzYzODE2OTYxfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+    image:
+      "https://images.unsplash.com/photo-1727041423608-c15f1a145cc2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtaWRkbGUlMjBlYXN0ZXJuJTIwcmljZSUyMGRpc2h8ZW58MXx8fHwxNzYzODE2OTYxfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
   },
   {
     id: 3,
@@ -33,7 +34,8 @@ const recipes: Recipe[] = [
     cuisine: "Middle Eastern",
     time: "45 mins",
     servings: "4",
-    image: "https://images.unsplash.com/photo-1626323109252-0adb3b46692b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxrZWJhYiUyMG1lYXQlMjBza2V3ZXJzfGVufDF8fHx8MTc2MzgxNjk2Mnww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+    image:
+      "https://images.unsplash.com/photo-1626323109252-0adb3b46692b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxrZWJhYiUyMG1lYXQlMjBza2V3ZXJzfGVufDF8fHx8MTc2MzgxNjk2Mnww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
   },
   {
     id: 4,
@@ -41,8 +43,9 @@ const recipes: Recipe[] = [
     cuisine: "Palestinian",
     time: "1 hour",
     servings: "8",
-    image: "https://images.unsplash.com/photo-1708782340357-b7b38d653979?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxrbmFmZWglMjBkZXNzZXJ0fGVufDF8fHx8MTc2MzgxNjk2Mnww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-  }
+    image:
+      "https://images.unsplash.com/photo-1708782340357-b7b38d653979?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxrbmFmZWglMjBkZXNzZXJ0fGVufDF8fHx8MTc2MzgxNjk2Mnww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+  },
 ];
 
 interface PopularRecipesProps {
@@ -70,8 +73,10 @@ export function PopularRecipes({ onNavigateToBeshbarmak }: PopularRecipesProps) 
                 alt={recipe.name}
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-              
+
+              {/* 🔴 УБРАН тёмный градиент, который затемнял картинку */}
+              {/* <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div> */}
+
               {/* Cuisine Badge */}
               <div className="absolute top-3 left-3">
                 <span className="bg-amber-500 text-white px-3 py-1 rounded-full text-xs uppercase tracking-wide">
@@ -82,8 +87,10 @@ export function PopularRecipes({ onNavigateToBeshbarmak }: PopularRecipesProps) 
 
             {/* Content */}
             <div className="p-4 text-left">
-              <h3 className="text-amber-900 mb-3 group-hover:text-amber-700 transition-colors">{recipe.name}</h3>
-              
+              <h3 className="text-amber-900 mb-3 group-hover:text-amber-700 transition-colors">
+                {recipe.name}
+              </h3>
+
               <div className="flex items-center gap-4 text-sm text-gray-600">
                 <div className="flex items-center gap-1.5">
                   <Clock className="w-4 h-4" />

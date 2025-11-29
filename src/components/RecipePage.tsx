@@ -1,7 +1,6 @@
 import { useState } from "react";
-import { ArrowLeft, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowLeft, ChevronLeft, ChevronRight, Star, ChefHat, Clock, Users } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
-import { logUserAction } from "../services/logsApi";
 
 const beshbarmakSteps = [
   {
@@ -55,7 +54,7 @@ const beshbarmakSteps = [
     number: 7,
     title: "Cut into Pieces",
     description:
-      "Cut the rolled dough into rectangles or diamond shapes, about 5-7 cm in size. Let them dry slightly while the broth finishes cooking.",
+      "Cut the rolled dough into rectangles or diamond shapes, about 5-7 cm in size.",
     image:
       "https://images.unsplash.com/photo-1701775696323-57c5e7640185?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjdXR0aW5nJTIwZG91Z2glMjBwaWVjZXN8ZW58MXx8fHwxNzYzMjExMTMxfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
   },
@@ -63,248 +62,493 @@ const beshbarmakSteps = [
     number: 8,
     title: "Remove the Beef",
     description:
-      "After 2-2.5 hours of simmering, remove the cooked beef from the broth. Let it cool slightly, then separate into medium-sized pieces.",
-    image:
-      "https://i.ibb.co/Q7r51RHc/Chat-GPT-Image-15-2025-19-19-57.png",
+      "After 2-2.5 hours of simmering, remove the cooked beef from the broth. Let it cool slightly, then separate into medium pieces.",
+    image: "https://i.ibb.co/Q7r51RHc/Chat-GPT-Image-15-2025-19-19-57.png",
   },
   {
     number: 9,
     title: "Prepare Braised Onions",
     description:
-      "Slice the remaining 2 onions into half-rings. Place in a bowl and pour hot broth over them. Let steep for 10-15 minutes. Strain the broth and season generously with salt and black pepper to taste. Return to heat.",
+      "Slice the remaining onions into half-rings. Pour hot broth over them, steep 10–15 minutes.",
     image: "https://i.ibb.co/nt5MTsr/wmremove-transformed.jpg",
   },
   {
     number: 10,
     title: "Prepare for Cooking Dough",
     description:
-      "Using a skimmer, remove the onions from the broth and transfer them into a bowl. Add 1-2 cups of water to the broth to dilute it slightly, ensuring there's enough liquid to cook all the dough pieces. Bring the broth to a rapid boil. Add the dough pieces in batches, cooking for about 2 minutes until they float.",
-    image:
-      "https://i.ibb.co/PG7crDRH/wmremove-transformed-2.jpg",
+      "Remove onions from broth. Dilute broth with water. Bring to rapid boil, cook dough pieces in batches.",
+    image: "https://i.ibb.co/PG7crDRH/wmremove-transformed-2.jpg",
   },
   {
     number: 11,
     title: "Remove with Skimmer",
     description:
-      "Use a slotted spoon or skimmer to remove the cooked dough pieces. Place them on a large serving plate. Continue cooking dough in batches. Layer the cooked dough on the plate, building up the base.",
-    image:
-      "https://i.ibb.co/1tXL2Lwy/wmremove-transformed-4.jpg",
+      "Remove cooked dough pieces using a skimmer. Layer them on a large plate.",
+    image: "https://i.ibb.co/1tXL2Lwy/wmremove-transformed-4.jpg",
   },
   {
     number: 12,
     title: "Top with Beef and Onions",
     description:
-      "Arrange the beef pieces on top of the dough. Add the braised onions (drained) over the beef.",
+      "Place the beef pieces on top of the dough and add the braised onions.",
     image: "https://i.ibb.co/bgmg1gNV/27.jpg",
   },
   {
     number: 13,
     title: "Garnish and Serve",
     description:
-      "Sprinkle generously with fresh chopped green onions. Serve hot with the broth in separate bowls on the side. Enjoy with your hands - the traditional way!",
+      "Top with chopped green onions. Serve hot with broth in separate bowls.",
     image:
       "https://i.ibb.co/0y4BMrZ0/wmremove-transformed-6-49d3b5af-471c-4807-9e31-538201151beb.jpg",
   },
 ];
 
+const maqlubaSteps = [
+  {
+    number: 1,
+    title: "Boil the Chicken",
+    description: "Sauté the onion in a little oil. Add the chicken pieces and brown them lightly. Add salt and spices. Cover with hot water and boil until fully cooked (about 30 minutes). Keep the chicken broth.",
+    image: "https://i.ibb.co/P7hfcd5/photo-2025-11-29-17-08-09.jpg",
+  },
+  {
+    number: 2,
+    title: "Prepare the Vegetables",
+    description: "Fry the eggplant slices (and potatoes if using). Prepare tomato slices for the bottom of the pot.",
+    image: "https://i.ibb.co/3mL79QPn/photo-2025-11-29-17-08-16.jpg",
+  },
+  {
+    number: 3,
+    title: "Assemble the Maqluba",
+    description: "In a clean pot: Place tomato slices on the bottom. Add the fried eggplants. Add potatoes (optional). Place the cooked chicken pieces on top. Add the rice evenly over everything.",
+    image: "https://i.ibb.co/23KFNg6d/photo-2025-11-29-17-08-18.jpg",
+  },
+  {
+    number: 4,
+    title: "Add Broth and Cook",
+    description: "Pour hot chicken broth until it covers the rice by about 1 cm. Cook on high heat until the rice absorbs most of the liquid. Lower the heat, cover, and cook for 20–25 minutes.",
+    image: "https://i.ibb.co/M5j1vM5z/photo-2025-11-29-17-08-20.jpg",
+  },
+  {
+    number: 5,
+    title: "Rest and Flip",
+    description: "Let it rest for 5 minutes. Place a large tray on top of the pot. Flip the pot quickly and lift it slowly to reveal the beautiful layered dish.",
+    image: "https://i.ibb.co/Y4m8hKg5/photo-2025-11-29-17-08-22.jpg",
+  },
+  {
+    number: 6,
+    title: "Garnish and Serve",
+    description: "Garnish with toasted pine nuts, almonds, and fresh parsley. Serve with yogurt or salad on the side.",
+    image: "https://i.ibb.co/mPX3GC3/photo-2025-11-29-17-17-59.jpg",
+  },
+];
+const plovSteps = [
+  {
+    number: 1,
+    title: "Prepare Chicken and Onion",
+    description: "Wash and dry chicken breast. Cut into small pieces. Peel and chop onion into small cubes.",
+    image: "https://i.ibb.co/Pv2bP2p3/b3655309-1c2d-4159-99d5-0cd9232a9a86.webp",
+  },
+  {
+    number: 2,
+    title: "Heat Oil",
+    description: "Pour vegetable oil into a kazan or deep pan. Oil layer should be at least 1 cm deep.",
+    image: "https://i.ibb.co/XxVGwLBK/d145e100-f7c3-4709-b368-9b6b598eac38.webp",
+  },
+  {
+    number: 3,
+    title: "Cook Onion and Chicken",
+    description: "Add onion and fry until golden. Add chicken pieces. Fry on high heat, turning pieces. Cover and cook on low heat for 15 minutes.",
+    image: "https://i.ibb.co/1GJDVC95/fb0e0cbe-af6e-4782-8c22-7892ac0f46c6.webp",
+  },
+  {
+    number: 4,
+    title: "Prepare Carrots",
+    description: "Wash, peel and cut carrots into thin strips. You can use Korean carrot grater.",
+    image: "https://i.ibb.co/3y3HwFfB/77e79c76-8282-41d2-b5dd-36200b199730.webp",
+  },
+  {
+    number: 5,
+    title: "Add Carrots",
+    description: "Add carrots to the kazan with chicken and onion. Spread in even layer. Cover and cook on low heat for 10 minutes.",
+    image: "https://i.ibb.co/XkMw3SfX/524bea09-9cea-4a48-bc5d-2931e27ca6e5.webp",
+  },
+  {
+    number: 6,
+    title: "Wash Rice",
+    description: "Put rice in deep bowl. Wash with water until water becomes clear. Drain rice in colander.",
+    image: "https://i.ibb.co/dJMvz6M9/96308402-8efd-489a-aa73-04b611a750a5.webp",
+  },
+  {
+    number: 7,
+    title: "Add Spices and Garlic",
+    description: "Mix rice with salt and all spices. Wash garlic heads, remove outer skin. Place garlic on carrot layer in kazan.",
+    image: "https://i.ibb.co/vCqcBndp/a0f361fc-cf79-4ff5-9771-bcfd29460017.webp",
+  },
+  {
+    number: 8,
+    title: "Add Rice and Water",
+    description: "Spread prepared rice over garlic. Pour hot water through skimmer. Water layer over rice should be at least 1 cm.",
+    image: "https://i.ibb.co/dwYLLMdm/b24fa473-6984-41ff-b7be-090a840a98d1.webp",
+  },
+  {
+    number: 9,
+    title: "Cook Plov",
+    description: "Cover kazan tightly with lid and towel. Cook on low heat for 30 minutes. Then mix carefully and cook 15 minutes more.",
+    image: "https://i.ibb.co/BHZtRXBN/c3f7beba-78df-4b80-a50a-0326facf6e4f.webp",
+  },
+  {
+    number: 10,
+    title: "Let it Rest",
+    description: "Turn off heat. Leave plov covered with lid and towel on hot stove for 15 minutes to rest. Then serve.",
+    image: "https://i.ibb.co/gbsqmWVg/fbb38e90-7413-4c8d-b107-c13e204ecd9d.webp",
+  },
+];
+const recipeData = {
+  beshbarmak: {
+    name: "Beshbarmak",
+    subtitle: "Beshbarmak with Beef",
+    image: "https://i.ibb.co/Dfpx6mzb/images.png",
+    difficulty: "Intermediate",
+    time: "3 hours",
+    servings: "1 person",
+    ingredients: [
+      "• <strong>Beef</strong> — 200 g",
+      "• <strong>Onion</strong> — ½ piece",
+      "• <strong>Carrot</strong> — ½ piece",
+      "• <strong>Flour</strong> — 80 g",
+      "• <strong>Egg</strong> — ½ egg",
+      "• <strong>Salt</strong> — to taste",
+      "• <strong>Black pepper</strong> — to taste",
+      "• <strong>Green onion</strong> — pinch",
+      "• <strong>Water</strong> — as needed"
+    ],
+    steps: beshbarmakSteps,
+    finalImage: "https://images.unsplash.com/photo-1649373860956-0974e8583c27"
+  },
+  maqluba: {
+    name: "Maqluba",
+    subtitle: "Upside-Down Rice Dish",
+    image: "https://i.ibb.co/QFcjj7MD/photo-2025-11-29-15-35-10.jpg",
+    difficulty: "Intermediate",
+    time: "2 hours",
+    servings: "2 person",
+    ingredients: [
+      "• <strong>Short-grain rice</strong> — 150 g (washed and soaked 20 min)",
+      "• <strong>Chicken</strong> — 200 g, cut into pieces",
+      "• <strong>Eggplant</strong> — 1 small, sliced and fried",
+      "• <strong>Potato</strong> — 1 medium, sliced and fried (optional)",
+      "• <strong>Onion</strong> — ½ piece, chopped",
+      "• <strong>Tomato</strong> — ½ piece, sliced",
+      "• <strong>Mixed spices</strong> — ½ tsp",
+      "• <strong>Turmeric</strong> — ½ tsp",
+      "• <strong>Cinnamon</strong> — ¼ tsp",
+      "• <strong>Black pepper</strong> — ¼ tsp",
+      "• <strong>Salt</strong> — to taste",
+      "• <strong>Hot water</strong> — as needed for cooking"
+    ],
+    steps: maqlubaSteps,
+    finalImage: "https://i.ibb.co/QFcjj7MD/photo-2025-11-29-15-35-10.jpg"
+  },
+plov: {
+  name: "Plov",
+  subtitle: "Chicken Plov",
+  image: "",
+  difficulty: "Intermediate",
+  time: "1 hour",
+  servings: "2 person",
+  ingredients: [
+    "• <strong>Chicken breast</strong> — 165-170 g",
+    "• <strong>Onion</strong> — 100 g (1 small onion)",
+    "• <strong>Vegetable oil</strong> — 27 ml (2 tablespoons)",
+    "• <strong>Carrot</strong> — 165-170 g (1 large or 1.5 medium)",
+    "• <strong>Long grain rice</strong> — 165-170 g",
+    "• <strong>Chili powder</strong> — ⅙ tsp (small pinch)",
+    "• <strong>Paprika</strong> — ⅙ tsp",
+    "• <strong>Cumin</strong> — ⅓ tsp",
+    "• <strong>Barberries</strong> — 1 tsp",
+    "• <strong>Turmeric</strong> — ⅓ tsp",
+    "• <strong>Garlic</strong> — ⅔ head (better 1 small head)",
+    "• <strong>Salt</strong> — to taste (usually ½ tsp)"
+  ],
+  steps: plovSteps,
+  finalImage: "https://i.ibb.co/rXT5VZb/5c501298-3ee6-4ece-9307-3e2c8e666a3b.webp"
+}
+};
+
 interface RecipePageProps {
   recipeId: string;
-  userId: string | null;
   onNavigateBack: () => void;
 }
 
-export function RecipePage({ recipeId, userId, onNavigateBack }: RecipePageProps) {
+export function RecipePage({ recipeId, onNavigateBack }: RecipePageProps) {
   const [currentStep, setCurrentStep] = useState(0);
+  const [rating, setRating] = useState(0);
+  const [hoveredRating, setHoveredRating] = useState(0);
+  const [feedback, setFeedback] = useState("");
 
-  // For now, only Beshbarmak is implemented
-  const steps = beshbarmakSteps;
-  const totalSteps = steps.length + 1; // +1 for the final serving page
-  const recipeName = "Beshbarmak";
-  const isServingPage = currentStep === steps.length;
-  const step = !isServingPage ? steps[currentStep] : null;
+  const recipe = recipeData[recipeId as keyof typeof recipeData] || recipeData.beshbarmak;
+  const steps = recipe.steps;
+  const totalSteps = 1 + steps.length + 1;
 
-  const handlePrevious = () => {
-    if (currentStep > 0) {
-      setCurrentStep(currentStep - 1);
-      logUserAction({
-        userId,
-        recipeId,
-        action: 'previous_step',
-        stepIndex: currentStep - 1,
-      });
-    }
-  };
+  const isIngredientsPage = currentStep === 0;
+  const isServingPage = currentStep === totalSteps - 1;
+  const isCookingStep = !isIngredientsPage && !isServingPage;
 
-  const handleNext = () => {
-    if (currentStep < totalSteps - 1) {
-      setCurrentStep(currentStep + 1);
-      logUserAction({
-        userId,
-        recipeId,
-        action: 'next_step',
-        stepIndex: currentStep + 1,
-      });
-    }
+  const cookingStepIndex = currentStep - 1;
+  const step = isCookingStep ? steps[cookingStepIndex] : null;
+
+  const handlePrevious = () => currentStep > 0 && setCurrentStep(currentStep - 1);
+  const handleNext = () => currentStep < totalSteps - 1 && setCurrentStep(currentStep + 1);
+  // const handleBack = () => (currentStep === 0 ? onNavigateBack() : handlePrevious());
+  const handleBack = () => onNavigateBack();
+
+  const handleSubmitFeedback = () => {
+    alert("Thank you for your feedback!");
   };
 
   return (
     <div className="h-screen flex flex-col bg-gradient-to-b from-stone-50 via-white to-amber-50/30">
-      {/* Fixed Header */}
+      {/* Header */}
       <header className="bg-white/80 backdrop-blur-sm border-b border-amber-100/50 flex-shrink-0">
         <div className="max-w-5xl mx-auto px-8 py-5">
           <button
-            onClick={onNavigateBack}
+            onClick={handleBack}
             className="flex items-center gap-2 text-amber-700 hover:text-amber-900 transition-colors mb-3"
           >
             <ArrowLeft className="w-5 h-5" />
             <span>Back to Recipes</span>
           </button>
+
           <div className="flex items-center justify-between">
-            <h1 className="text-amber-900">{recipeName}</h1>
+            <h1 className="text-amber-900">{recipe.name}</h1>
             <span className="text-gray-500">
-              Step {currentStep + 1} of {totalSteps}
+              {isIngredientsPage
+                ? "Ingredients"
+                : isServingPage
+                ? "Finish"
+                : `Step ${currentStep} of ${totalSteps - 2}`}
             </span>
           </div>
         </div>
       </header>
 
-      {/* Scrollable Main Content */}
+      {/* Main Content */}
       <main className="flex-1 overflow-y-auto">
         <div className="max-w-5xl mx-auto px-8 py-8">
-          {!isServingPage ? (
+
+          {/* INGREDIENTS PAGE */}
+          {isIngredientsPage && (
+            <div className="bg-white rounded-2xl shadow-lg border border-amber-100 p-8 mb-8">
+
+              {/* Icons + Info */}
+              <div className="grid md:grid-cols-3 gap-6 mb-8 text-lg text-gray-800">
+
+                {/* Difficulty */}
+                <div className="flex items-center gap-3">
+                  <ChefHat className="w-7 h-7 text-amber-700" />
+                  <div>
+                    <h3 className="text-amber-800 mb-1">Difficulty</h3>
+                    <p className="font-semibold">{recipe.difficulty}</p>
+                  </div>
+                </div>
+
+                {/* Cooking Time */}
+                <div className="flex items-center gap-3">
+                  <Clock className="w-7 h-7 text-amber-700" />
+                  <div>
+                    <h3 className="text-amber-800 mb-1">Cooking Time</h3>
+                    <p className="font-semibold">{recipe.time}</p>
+                  </div>
+                </div>
+
+                {/* Servings */}
+                <div className="flex items-center gap-3">
+                  <Users className="w-7 h-7 text-amber-700" />
+                  <div>
+                    <h3 className="text-amber-800 mb-1">Servings</h3>
+                    <p className="font-semibold">{recipe.servings}</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* INGREDIENTS LIST */}
+              <div className="border-t border-amber-100 pt-8">
+                <h2 className="text-amber-900 mb-6">Ingredients for 1 Person</h2>
+
+                <ul className="space-y-3 text-gray-700 text-lg leading-relaxed">
+                  {recipe.ingredients.map((ingredient, index) => (
+                    <li key={index} dangerouslySetInnerHTML={{ __html: ingredient }} />
+                  ))}
+                </ul>
+              </div>
+            </div>
+          )}
+
+          {/* COOKING STEPS */}
+          {isCookingStep && (
             <>
-              {/* Step Number Badge */}
               <div className="mb-6">
                 <div className="inline-flex items-center gap-3 bg-amber-500 text-white px-6 py-3 rounded-full shadow-lg">
-                  <span className="text-xl">Step {step.number}</span>
+                  <span className="text-xl">Step {step!.number}</span>
                 </div>
               </div>
 
-              {/* Step Image - Medium Size */}
-              <div className="mb-8">
-                <div className="aspect-[4/3] max-h-96 rounded-3xl overflow-hidden shadow-xl border border-amber-100">
-                  <ImageWithFallback
-                    src={step.image}
-                    alt={`Step ${step.number}: ${step.title}`}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              </div>
+             <div className="mb-8">
+  <div className="aspect-[4/3] max-h-96 rounded-3xl overflow-hidden shadow-xl border border-amber-100">
+    {step!.image ? (
+      <ImageWithFallback
+        src={step!.image}
+        alt={`Step ${step!.number}: ${step!.title}`}
+        className="w-full h-full object-contain bg-white"
+      />
+    ) : (
+      <div className="w-full h-full bg-amber-100 flex items-center justify-center">
+        <span className="text-amber-800 text-lg">Image coming soon</span>
+      </div>
+    )}
+  </div>
+</div>
 
-              {/* Scrollable Step Content */}
               <div className="bg-white rounded-2xl shadow-lg border border-amber-100 p-8 mb-8">
-                <h2 className="text-amber-900 mb-4">{step.title}</h2>
-                <p className="text-gray-700 text-lg leading-relaxed">
-                  {step.description}
-                </p>
+                <h2 className="text-amber-900 mb-4">{step!.title}</h2>
+                <p className="text-gray-700 text-lg">{step!.description}</p>
               </div>
             </>
-          ) : (
+          )}
+
+          {/* FINAL PAGE */}
+          {isServingPage && (
             <>
-              {/* Serving & Tradition Page */}
               <div className="mb-6">
                 <div className="inline-flex items-center gap-3 bg-amber-500 text-white px-6 py-3 rounded-full shadow-lg">
                   <span className="text-xl">Serve & Enjoy</span>
                 </div>
               </div>
 
-              {/* Final Dish Image */}
               <div className="mb-8">
                 <div className="aspect-[4/3] max-h-96 rounded-3xl overflow-hidden shadow-xl border border-amber-100">
                   <ImageWithFallback
-                    src="https://images.unsplash.com/photo-1649373860956-0974e8583c27?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxiZXNoYmFybWFrJTIwZmluaXNoZWQlMjBwbGF0ZXxlbnwxfHx8fDE3NjM4MTk3NzF8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-                    alt="Finished Beshbarmak dish"
+                    src={recipe.finalImage}
+                    alt={`Finished ${recipe.name}`}
                     className="w-full h-full object-cover"
                   />
                 </div>
               </div>
 
-              {/* Tradition Content */}
+<div className="bg-white rounded-2xl shadow-lg border border-amber-100 p-8 mb-8 text-lg text-gray-700">
+  {recipeId === "maqluba" 
+    ? "Serve hot with yogurt or fresh salad. The dramatic presentation makes this dish perfect for special occasions."
+    : recipeId === "plov"
+    ? "Serve hot with fresh vegetables or salad. Perfect as a complete meal on its own."
+    : "Serve with warm sorpa in a separate bowl. Traditionally eaten with hands."}
+</div>
+
+              {/* RATING */}
               <div className="bg-white rounded-2xl shadow-lg border border-amber-100 p-8 mb-8">
-                <h2 className="text-amber-900 mb-6">Enjoy Your Meal!</h2>
-                
-                <div className="space-y-4 text-gray-700 text-lg leading-relaxed">
-                  <p>
-                    Бешбармак (Beshbarmak) traditionally is eaten with hands - the name literally means "five fingers" in Kazakh.
-                  </p>
-                  <p>
-                    This dish is usually shared from a common platter, bringing family and friends together around the table.
-                  </p>
-                  <p>
-                    Serve the hot broth (сорпа) in separate bowls on the side for sipping between bites.
-                  </p>
+                <h3 className="text-amber-900 mb-4">Rate This Recipe</h3>
+
+                <div className="flex items-center gap-2 mb-6">
+                  {[1, 2, 3, 4, 5].map((star) => (
+                    <button
+                      key={star}
+                      onClick={() => setRating(star)}
+                      onMouseEnter={() => setHoveredRating(star)}
+                      onMouseLeave={() => setHoveredRating(0)}
+                      className="transition-all hover:scale-110"
+                    >
+                      <Star
+                        className={`w-10 h-10 ${
+                          star <= (hoveredRating || rating)
+                            ? "fill-amber-500 text-amber-500"
+                            : "text-gray-300"
+                        }`}
+                      />
+                    </button>
+                  ))}
                 </div>
 
-                {/* Kazakh Decoration */}
-                <div className="flex items-center justify-center gap-6 mt-8 pt-8 border-t border-amber-100">
-                  <div className="h-px bg-gradient-to-r from-transparent via-amber-300 to-transparent flex-1 max-w-xs"></div>
-                  <svg className="w-16 h-16 text-amber-400/30" viewBox="0 0 100 100" fill="currentColor">
-                    <circle cx="50" cy="50" r="5" />
-                    <circle cx="50" cy="20" r="3" />
-                    <circle cx="50" cy="80" r="3" />
-                    <circle cx="20" cy="50" r="3" />
-                    <circle cx="80" cy="50" r="3" />
-                    <path d="M 50 5 L 50 20 M 50 80 L 50 95 M 5 50 L 20 50 M 80 50 L 95 50" stroke="currentColor" strokeWidth="2" fill="none" />
-                  </svg>
-                  <div className="h-px bg-gradient-to-r from-transparent via-amber-300 to-transparent flex-1 max-w-xs"></div>
-                </div>
+                <textarea
+                  value={feedback}
+                  onChange={(e) => setFeedback(e.target.value)}
+                  placeholder="Share your thoughts..."
+                  className="w-full p-4 border rounded-xl border-amber-200 focus:ring-2 focus:ring-amber-500 resize-none text-gray-700"
+                  rows={4}
+                />
+
+                <p className="text-center text-gray-600 mt-4">
+                  We would be very grateful for your feedback!
+                </p>
+
+                <button
+                  onClick={handleSubmitFeedback}
+                  className="w-full mt-6 px-8 py-4 bg-amber-500 text-white rounded-2xl hover:bg-amber-600 transition shadow-md"
+                >
+                  Submit Feedback
+                </button>
               </div>
             </>
           )}
         </div>
       </main>
 
-      {/* Fixed Navigation Footer */}
+      {/* FOOTER */}
       <footer className="bg-white border-t border-amber-200 flex-shrink-0 shadow-lg">
         <div className="max-w-5xl mx-auto px-8 py-6">
-          <div className="flex items-center justify-between gap-4">
-            {!isServingPage ? (
+          <div className="flex items-center justify-between">
+
+            {/* INGREDIENTS PAGE */}
+            {isIngredientsPage && (
+              <>
+                <div></div>
+                <button
+                  onClick={handleNext}
+                  className="flex items-center gap-3 px-8 py-4 bg-amber-500 text-white rounded-2xl hover:bg-amber-600 shadow-md transition"
+                >
+                  Next <ChevronRight className="w-6 h-6" />
+                </button>
+              </>
+            )}
+
+            {/* FINAL PAGE */}
+            {isServingPage && (
+              <button
+                onClick={handlePrevious}
+                className="flex items-center gap-3 px-8 py-4 bg-amber-500 text-white rounded-2xl hover:bg-amber-600 shadow-md transition"
+              >
+                <ChevronLeft className="w-6 h-6" /> Previous
+              </button>
+            )}
+
+            {/* COOKING STEPS */}
+            {isCookingStep && (
               <>
                 <button
                   onClick={handlePrevious}
-                  disabled={currentStep === 0}
-                  className={`flex items-center gap-3 px-8 py-4 rounded-2xl transition-all duration-300 ${
-                    currentStep === 0
-                      ? "bg-gray-100 text-gray-400 cursor-not-allowed"
-                      : "bg-amber-500 text-white hover:bg-amber-600 shadow-md hover:shadow-lg"
-                  }`}
+                  className="flex items-center gap-3 px-8 py-4 bg-amber-500 text-white rounded-2xl hover:bg-amber-600 shadow-md transition"
                 >
-                  <ChevronLeft className="w-6 h-6" />
-                  <span className="text-lg">Previous</span>
+                  <ChevronLeft className="w-6 h-6" /> Previous
                 </button>
 
-                {/* Progress Dots */}
                 <div className="flex items-center gap-2">
-                  {Array.from({ length: totalSteps }).map((_, idx) => (
-                    <button
+                  {Array.from({ length: totalSteps - 1 }).map((_, idx) => (
+                    <div
                       key={idx}
-                      onClick={() => setCurrentStep(idx)}
-                      className={`transition-all duration-300 rounded-full ${
+                      className={`rounded-full ${
                         idx === currentStep
                           ? "w-10 h-3 bg-amber-500"
-                          : "w-3 h-3 bg-amber-200 hover:bg-amber-300"
+                          : "w-3 h-3 bg-amber-200"
                       }`}
-                      aria-label={`Go to step ${idx + 1}`}
-                    />
+                    ></div>
                   ))}
                 </div>
 
                 <button
                   onClick={handleNext}
-                  className="flex items-center gap-3 px-8 py-4 rounded-2xl bg-amber-500 text-white hover:bg-amber-600 shadow-md hover:shadow-lg transition-all duration-300"
+                  className="flex items-center gap-3 px-8 py-4 bg-amber-500 text-white rounded-2xl hover:bg-amber-600 shadow-md transition"
                 >
-                  <span className="text-lg">Next</span>
-                  <ChevronRight className="w-6 h-6" />
+                  Next <ChevronRight className="w-6 h-6" />
                 </button>
               </>
-            ) : (
-              <button
-                onClick={onNavigateBack}
-                className="w-full flex items-center justify-center gap-3 px-8 py-4 rounded-2xl bg-amber-500 text-white hover:bg-amber-600 shadow-md hover:shadow-lg transition-all duration-300"
-              >
-                <ArrowLeft className="w-6 h-6" />
-                <span className="text-lg">Back to Recipes</span>
-              </button>
             )}
           </div>
         </div>

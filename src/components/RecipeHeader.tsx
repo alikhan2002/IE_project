@@ -11,7 +11,9 @@ export function RecipeHeader() {
           alt="Beshbarmak - Traditional Kazakh Dish"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+
+        {/* MUCH LIGHTER GRADIENT — matches your reference */}
+        {/* <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-black/10 to-transparent"></div> */}
 
         {/* Kazakh decorative element */}
         <div className="absolute top-8 right-8 opacity-20">
@@ -47,14 +49,14 @@ export function RecipeHeader() {
               Traditional Kazakh
             </p>
           </div>
+
           <h1 className="text-white mb-4">Beshbarmak</h1>
-          <h2 className="text-white/90 mb-6">
-            Beshbarmak with Beef
-          </h2>
+          <h2 className="text-white/90 mb-6">Beshbarmak with Beef</h2>
+
           <p className="text-white/80 max-w-2xl mb-8">
-            A quintessential Kazakh dish meaning "five fingers"
-            - tender boiled beef served atop thin handmade
-            noodles with aromatic onions braised in rich broth.
+            A quintessential Kazakh dish meaning "five fingers" —
+            tender boiled beef served atop thin handmade noodles with
+            aromatic onions braised in rich broth.
           </p>
 
           {/* Recipe Info */}
@@ -65,7 +67,7 @@ export function RecipeHeader() {
             </div>
             <div className="flex items-center gap-2 text-white/90">
               <Users className="w-5 h-5" />
-              <span>6-8 servings</span>
+              <span>6–8 servings</span>
             </div>
             <div className="flex items-center gap-2 text-white/90">
               <ChefHat className="w-5 h-5" />
