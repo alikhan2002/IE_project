@@ -32,11 +32,11 @@ const kazakhRecipes: Recipe[] = [
     description: "A quintessential Kazakh dish meaning \"five fingers\" — tender boiled beef served atop thin handmade noodles with aromatic onions braised in rich broth."
   },
   {
-    id: "kuyrdak",
+    id: "kuurdak",
     name: "Kuyrdak",
     subtitle: "Traditional Meat Dish",
-    image: "https://images.unsplash.com/photo-1737171329207-ab95a6e5f586?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxrdXlyZGFrJTIwa2F6YWtoJTIwbWVhdHxlbnwxfHx8fDE3NjM4MTkxNjV8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-    time: "1.5 hours",
+    image: "https://i.ibb.co/RVxR4wG/kuirdak-iz-kurici-119966.jpg",
+    time: "1 hour",
     servings: "1 serving",
     difficulty: "Easy",
     description: "A hearty Kazakh dish featuring tender meat and potatoes fried with onions and spices, creating a rich and satisfying meal."
@@ -46,11 +46,12 @@ const kazakhRecipes: Recipe[] = [
     name: "Plov",
     subtitle: "Chicken Plov",
     image: "https://i.ibb.co/rXT5VZb/5c501298-3ee6-4ece-9307-3e2c8e666a3b.webp",
-    time: "1.5 hours",
+    time: "1 hour",
     servings: "1 serving",
     difficulty: "Intermediate",
     description: "Traditional rice dish with chicken, carrots, and aromatic spices, cooked in layers for rich flavor."
-  }
+  },
+
 ];
 
 const palestinianRecipes: Recipe[] = [
@@ -64,16 +65,16 @@ const palestinianRecipes: Recipe[] = [
     difficulty: "Intermediate",
     description: "A Palestinian classic featuring layers of rice, vegetables, and tender meat, dramatically flipped upside down for an impressive presentation."
   },
-  {
-    id: "musakhan",
-    name: "Musakhan",
-    subtitle: "Sumac Chicken with Bread",
-    image: "https://images.unsplash.com/photo-1756137949459-8aad8455d040?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtdXNha2hhbiUyMGNoaWNrZW4lMjBicmVhZHxlbnwxfHx8fDE3NjM4MTkxNjV8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-    time: "1.5 hours",
-    servings: "1 serving",
-    difficulty: "Intermediate",
-    description: "Tender roasted chicken with caramelized onions and tangy sumac, served over flatbread soaked in olive oil and spices."
-  },
+{
+  id: "musakhan",
+  name: "Musakhan",
+  subtitle: "Sumac Chicken with Bread",
+  image: "https://i.ibb.co/p6DWpXDV/photo-2025-11-29-15-35-55.jpg",
+  time: "1 hour",
+  servings: "1 serving",
+  difficulty: "Intermediate",
+  description: "Tender roasted chicken with caramelized onions and tangy sumac, served over flatbread soaked in olive oil and spices."
+},
   {
     id: "knafeh",
     name: "Knafeh",

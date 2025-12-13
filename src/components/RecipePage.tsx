@@ -205,6 +205,134 @@ const plovSteps = [
     image: "https://i.ibb.co/gbsqmWVg/fbb38e90-7413-4c8d-b107-c13e204ecd9d.webp",
   },
 ];
+const kuurdakSteps = [
+  {
+  number: 1,
+  title: "Fry Chicken",
+  description: "Cut the chicken into pieces and fry in hot oil until golden brown. Season with salt.",
+  image: "https://i.postimg.cc/44Y2rj9Y/kuirdak-iz-kurici-119961.jpg",
+},
+{
+  number: 2,
+  title: "Add Onions",
+  description: "Slice the onions into rings and add them to the pan. Cook until soft.",
+  image: "https://i.postimg.cc/PfCVB0wP/kuirdak-iz-kurici-119962.jpg",
+},
+{
+  number: 3,
+  title: "Add Vegetables",
+  description: "Cut the vegetables into cubes and add them to the pan with the chicken and onions.",
+  image: "https://i.postimg.cc/nVXS6NDj/kuirdak-iz-kurici-119963.jpg",
+},
+{
+  number: 4,
+  title: "Add Pepper",
+  description: "Add pepper and mix well.",
+  image: "https://i.postimg.cc/PfCVB0wN/kuirdak-iz-kurici-119964.jpg",
+},
+{
+  number: 5,
+  title: "Add Broth and Cook",
+  description: "Pour in the broth and let it simmer until the chicken is fully cooked.",
+  image: "https://i.postimg.cc/ryDZv7ry/kuirdak-iz-kurici-119965.jpg",
+},
+{
+  number: 6,
+  title: "Serve",
+  description: "Serve hot with rice. Enjoy your meal!",
+  image: "https://i.postimg.cc/NMm9Xgnx/kuirdak-iz-kurici-119966.jpg",
+},
+
+];
+const musakhanSteps = [
+  {
+    number: 1,
+    title: "Prepare Chicken for Roasting",
+    description: "Season the chicken and place it in a roasting pan. Keep the skin side up.",
+    image: "https://i.postimg.cc/Jh9KmzJm/Uncooked_chicken_in_roaster_2048x1365.jpg",
+  },
+  {
+    number: 2,
+    title: "Roast Chicken",
+    description: "Roast chicken in preheated oven at 170°С for 50-60 minutes. For extra brown color, place under broiler for 2-4 minutes.",
+    image: "https://i.postimg.cc/KYKQdMKv/Chicken_baked_2048x1365.jpg",
+  },
+  {
+    number: 3,
+    title: "Chop Onions",
+    description: "Chop red onions finely.",
+    image: "https://i.postimg.cc/wBtFSmtj/Chopped_onions_2048x1383.jpg",
+  },
+  {
+    number: 4,
+    title: "Cook Onions with Sumac",
+    description: "In a pot heat olive oil over medium-high heat. Add chopped onions. Cook until soft and caramelized, about 10-15 minutes. Season with salt, black pepper, and sumac.",
+    image: "https://i.postimg.cc/Bv8NdK8S/Onions-and-sumac-2048x1529.jpg",
+  },
+  {
+    number: 5,
+    title: "Assemble Bread",
+    description: "Take caramelized onions with a spoon and spread over flatbread. Place under broiler for 2-3 minutes.",
+    image: "https://i.postimg.cc/6Q7zDv79/onions-over-bread-2048x1365.jpg",
+  },
+  {
+    number: 6,
+    title: "Assemble Musakhan",
+    description: "Place a piece of chicken over the bread. Sprinkle with toasted pine nuts and almonds.",
+    image: "https://i.postimg.cc/jjWvG7WT/Musakhan_close_up_photo_scaled.jpg",
+  },
+];
+const knafehSteps = [
+  {
+    number: 1,
+    title: "Break Kataifi Dough",
+    description: "Break kataifi dough and place it in the food processor.",
+    image: "https://i.postimg.cc/gj53yMDr/Dough_in_food_processor_1.jpg",
+  },
+  {
+    number: 2,
+    title: "Shred the Dough",
+    description: "Shred the dough in food processor (see pro tips for shredding size).",
+    image: "https://i.postimg.cc/qqY2cmLM/Dough_in_a_food_processor_2.jpg",
+  },
+  {
+    number: 3,
+    title: "Add Butter and Coloring",
+    description: "Remove dough from food processor. Pour melted butter and coloring over it.",
+    image: "https://i.postimg.cc/C5tbCvNM/Dough_mixed_with_butter_1.jpg",
+  },
+  {
+    number: 4,
+    title: "Mix Dough with Butter",
+    description: "Use your hands to combine melted butter and coloring with dough. Mix until everything is well integrated.",
+    image: "https://i.postimg.cc/d3XGRWBJ/Dough_mixed_with_butter_2.jpg",
+  },
+  {
+    number: 5,
+    title: "Prepare Bottom Layer",
+    description: "Grease the pan. Spread most of the dough, leaving about ¼ for the top.",
+    image: "https://i.postimg.cc/brM106Tp/Layering_dough.jpg",
+  },
+  {
+    number: 6,
+    title: "Add Cheese Layer",
+    description: "Add shredded cheese on top. Press with hand or bottom of glass.",
+    image: "https://i.postimg.cc/MH410sDw/Layering_cheese_over_dough.jpg",
+  },
+  {
+    number: 7,
+    title: "Add Top Layer and Bake",
+    description: "Spread rest of dough on top. Press again. Bake at 180°C for 20-30 minutes.",
+    image: "https://i.postimg.cc/MH410sDw/Layering_cheese_over_dough.jpg",
+  },
+    {
+    number: 8,
+    title: "Сare flip into another platter",
+    description: "Once baked, with care flip into another (either the same size or a slightly bigger) platter, drizzle the knafeh with about ½ - ¾ of the warm sugar syrup, and sprinkle crushed pistachios on top. ",
+    image: "https://i.postimg.cc/5yjwCcw0/Knafeh_close_photo_scaled.jpg",
+  },
+];
+
 const recipeData = {
   beshbarmak: {
     name: "Beshbarmak",
@@ -227,6 +355,7 @@ const recipeData = {
     steps: beshbarmakSteps,
     finalImage: "https://images.unsplash.com/photo-1649373860956-0974e8583c27"
   },
+  
   maqluba: {
     name: "Maqluba",
     subtitle: "Upside-Down Rice Dish",
@@ -274,7 +403,77 @@ plov: {
   ],
   steps: plovSteps,
   finalImage: "https://i.ibb.co/rXT5VZb/5c501298-3ee6-4ece-9307-3e2c8e666a3b.webp"
-}
+},
+kuurdak: {
+  name: "Chicken Kuyrdak",
+  subtitle: "Simple Homemade Chicken Stew",
+  image: "",
+  difficulty: "Easy",
+  time: "40 minutes",
+  servings: "1 person",
+  ingredients: [
+    "• <strong>Chicken</strong> — 250 g",
+    "• <strong>Onion</strong> — ½ medium",
+    "• <strong>Tomato</strong> — ½ medium",
+    "• <strong>Olive oil</strong> — 2 tablespoons",
+    "• <strong>Bell pepper</strong> — ½ piece",
+    "• <strong>Salt</strong> — ½ tsp",
+    "• <strong>Black pepper</strong> — ¼ tsp",
+    "• <strong>Broth or water</strong> — 200 ml"
+  ],
+  steps: kuurdakSteps,
+  finalImage: "https://i.postimg.cc/NMm9Xgnx/kuirdak-iz-kurici-119966.jpg",
+  finalDescription: "Serve hot with rice or fresh bread. A light and comforting chicken dish."
+},
+
+musakhan: {
+  name: "Musakhan",
+  subtitle: "Sumac Chicken with Flatbread",
+  image: "",
+  difficulty: "Intermediate",
+  time: "1 hour",
+  servings: "1 person",
+  ingredients: [
+    "• <strong>Chicken legs or whole chicken</strong> — 2 legs or ~300 g, cut into pieces",
+    "• <strong>Red onions</strong> — 2 medium, thinly sliced",
+    "• <strong>Sumac</strong> — 2 tablespoons",
+    "• <strong>Extra virgin olive oil</strong> — 3 tablespoons",
+    "• <strong>Flatbread (taboon or naan)</strong> — 1 large piece",
+    "• <strong>Allspice</strong> — ½ teaspoon",
+    "• <strong>Cinnamon</strong> — ¼ teaspoon",
+    "• <strong>Black pepper</strong> — ¼ teaspoon",
+    "• <strong>Sea salt</strong> — to taste",
+    "• <strong>Lemon juice</strong> — 1 tablespoon",
+    "• <strong>Pine nuts</strong> — 1 tablespoon",
+    "• <strong>Almonds</strong> — 1 tablespoon, toasted"
+  ],
+  steps: musakhanSteps,
+  finalImage: "https://i.postimg.cc/4ywzKfKP/Eating-Musakhan-with-hands-2048x1366.jpg",
+  finalDescription: "Serve hot with flatbread, topped with onions, chicken, and toasted nuts. Traditionally eaten by hand."
+},
+
+knafeh: {
+  name: "Knafeh",
+  subtitle: "Cheese Dessert with Kataifi Dough",
+  image: "",
+  difficulty: "Intermediate",
+  time: "45 minutes",
+  servings: "1 person",
+  ingredients: [
+    "• <strong>Kataifi dough (shredded phyllo)</strong> — 80 g",
+    "• <strong>Unsalted butter or ghee</strong> — 40 g, melted",
+    "• <strong>White unsalted stretchy cheese</strong> — 100 g",
+    "• <strong>Sugar</strong> — 50 g",
+    "• <strong>Water</strong> — 40 ml",
+    "• <strong>Lemon juice</strong> — 1 teaspoon",
+    "• <strong>Rose water or orange blossom water</strong> — ½ teaspoon (optional)"
+  ],
+  steps: knafehSteps,
+  finalImage: "https://i.postimg.cc/5yjwCcw0/Knafeh_close_photo_scaled.jpg",
+  finalDescription: "Serve warm, drizzled with sweet sugar syrup. Crispy on the outside, stretchy and cheesy on the inside."
+},
+
+
 };
 
 interface RecipePageProps {
@@ -478,13 +677,19 @@ export function RecipePage({ recipeId, userId, onNavigateBack }: RecipePageProps
                 </div>
               </div>
 
-<div className="bg-white rounded-2xl shadow-lg border border-amber-100 p-8 mb-8 text-lg text-gray-700">
-  {recipeId === "maqluba" 
-    ? "Serve hot with yogurt or fresh salad. The dramatic presentation makes this dish perfect for special occasions."
-    : recipeId === "plov"
-    ? "Serve hot with fresh vegetables or salad. Perfect as a complete meal on its own."
-    : "Serve with warm sorpa in a separate bowl. Traditionally eaten with hands."}
-</div>
+    <div className="bg-white rounded-2xl shadow-lg border border-amber-100 p-8 mb-8 text-lg text-gray-700">
+      {recipeId === "maqluba" 
+        ? "Serve hot with yogurt or fresh salad. The dramatic presentation makes this dish perfect for special occasions."
+        : recipeId === "musakhan"
+        ? "Serve hot as a complete meal. Traditionally eaten with hands, tearing bread to wrap chicken and onions."
+        : recipeId === "knafeh"
+        ? "Serve warm for best texture. A beloved dessert that's crispy on top and creamy inside."
+        : recipeId === "plov"
+        ? "Serve hot with fresh vegetables or salad. Perfect as a complete meal on its own."
+        : recipeId === "kuurdak"
+        ? "Serve hot with fresh bread. A hearty traditional dish perfect for any occasion."
+        : "Serve with warm sorpa in a separate bowl. Traditionally eaten with hands."}
+    </div>
 
               {/* RATING */}
               <div className="bg-white rounded-2xl shadow-lg border border-amber-100 p-8 mb-8">
